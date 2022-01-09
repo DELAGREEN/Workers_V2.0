@@ -19,8 +19,7 @@ def privet():
 #************     МАССИВЫ ----- DATA              ***********
 #************************************************************
 #************************************************************
-data = []
-pre_data = []
+data = [["Жора Жопнов", "Адрес неизвестен 1"], ["Мартин Близаков", "Адрес неизвестен 2"], ["Адольф Шреденбергов", "Адрес неизвестен 3"]]
 #************************************************************
 #************************************************************
 #************************************************************
@@ -28,13 +27,9 @@ pre_data = []
 
 #Добавление работников
 def vjob():
-
-    pre_data = str(input(p+"Введите имя сотрудника: "))
+    
+    pre_data = [str(input(p+"Введите имя сотрудника: ")), str(input(p+"Введите Адрес места жительства сотрудника: "))]
     data.append(pre_data)
-
-    pre_addres = str(input(p+"Введите Адрес места жительства сотрудника: "))
-    addres.append(pre_addres)
-
     return vjob
 
 
@@ -42,14 +37,15 @@ def vjob():
 def how_many_workers():
     print("Номер"+p+"ФИО Работника"+p+"Место жительства")
     data_len = len(data)
-    addres_len = len(addres)
     i=0
     j=0
-    while i < data_len and addres_len:
+    w=1
+    while i < data_len:
         print(p+"-" * 50)
-        print(i+1,p,data[i], p,addres[j])
+        print(i+1,p,data[i][j],p,data[i][w])
         i+=1
-        j+=1
+        j+1
+        w+1
 
 def data_off_size():
     a = len(data)
@@ -60,7 +56,7 @@ def data_off_size():
         menu()
     else:
         how_many_workers()
-
+    return data_off_size
 
 def menu():
     while True:
@@ -84,16 +80,14 @@ def menu():
                 i = int(input("Введите порядковый согласно таблице для увольнения работника: "))
                 b = i - 1
                 del data[b]
-                del addres[b]
                 print("Работник уволен.")
 
 
             elif console_input2 == 2:
-                data_off_size()
+                #data_off_size()
                 how_many_workers()
                 index = data.index(str(input("Введите того кого хотите уволить: ")))
                 del data[index]
-                del addres[index]
                 print(p+"Сотрудник был уволен.")
             else:
                 print(p+"Ощибка, команды не существует.")
